@@ -16,6 +16,6 @@ public class circle : MonoBehaviour
     //When Mouse click the circle Change the color
     void OnMouseDown()
     {
-        m_SpriteRenderer.color = Color.green;
+        m_SpriteRenderer.color = Color.blue;
     }
 }
