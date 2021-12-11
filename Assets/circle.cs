@@ -6,10 +6,6 @@ public class circle : MonoBehaviour
 {
     SpriteRenderer m_SpriteRenderer;
 
-    int[] numbers = new int[] { 3, 0, -3 };
-
-    int randomIndex;
-
     public float speed;
 
     float x_position;
