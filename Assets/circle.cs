@@ -10,35 +10,68 @@ public class circle : MonoBehaviour
 
     int randomIndex;
 
-    Vector3 s_position;
-
     public float speed;
+
+    float x_position;
+
+    Camera cam;
+
+    float cam_height;
+
+    float cam_width;
+
+    public bool Boolean;
+
+    Renderer rend;
 
     void Start()
     {
-        randomIndex = Random.Range(0, 3);
 
-        //Start with random position on the list at "numbers"
-        s_position = new Vector3(13.5f, numbers[randomIndex], 0);
+        //Sometimes the circle appears sometimes not
+        rend = GetComponent<Renderer>();
 
-        transform.position = s_position;
+        Boolean = Random.value > 0.3f;
 
+        rend.enabled = Boolean;
+
+        //Start with color "red"
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
         m_SpriteRenderer.color = Color.red;
 
+        //Start circle position x right and close outside camera
+        cam = Camera.main;
+
+        cam_height = 2f * cam.orthographicSize;
+
+        cam_width = cam_height * cam.aspect;
+
+        x_position = cam_width / 2 + 3;
+
+        transform.position = new Vector3(x_position, transform.position.y, 0);
+
+
+
     }
+
+
     void Update()
     {
+        //When left outside camera respawn the circle
+        if (transform.position.x <= cam_width / -2 - 3)
+        {
+            Boolean = Random.value > 0.3f;
+
+            rend.enabled = Boolean;
+
+            transform.position = new Vector3(x_position, transform.position.y, 0);
+
+            m_SpriteRenderer.color = Color.red;
+        }
+
         //Automatically moving to the left
         transform.Translate(Vector3.left * speed * Time.deltaTime);
-
-        //Destroy the object and Respawn the Circle to the start position 
-        if (transform.position.x <= -15)
-        {
-            Instantiate(this.gameObject, s_position, Quaternion.identity);
-            Destroy(this.gameObject);
-        }
+        
     }
 
     //When Mouse click the circle Change the color
@@ -47,4 +80,5 @@ public class circle : MonoBehaviour
         m_SpriteRenderer.color = Color.green;
 
     }
+ 
 }

@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &151472610
+--- !u!1001 &161497327
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -134,21 +134,25 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 9146305956932583464, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
+      propertyPath: Boolean
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583466, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_Name
-      value: Circle  (1)
+      value: Circle  (2)
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.5
+      value: 14.61
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.z
@@ -268,7 +272,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &850951109
+--- !u!1001 &593387479
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -279,21 +283,25 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 9146305956932583464, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
+      propertyPath: Boolean
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583466, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_Name
-      value: Circle  (2)
+      value: Circle  (1)
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.5
+      value: 14.61
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.z
@@ -340,6 +348,10 @@ PrefabInstance:
       propertyPath: speed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 9146305956932583464, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
+      propertyPath: Boolean
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583466, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_Name
       value: 'Circle '
@@ -350,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.5
+      value: 14.61
       objectReference: {fileID: 0}
     - target: {fileID: 9146305956932583467, guid: 409ec37587a78904dabcf88d72ecc030, type: 3}
       propertyPath: m_LocalPosition.y
