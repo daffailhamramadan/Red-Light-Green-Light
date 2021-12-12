@@ -8,17 +8,17 @@ public class circle : MonoBehaviour
 
     public float speed;
 
-    float x_position;
-
     Camera cam;
 
     float cam_height;
 
-    float cam_width;
-
-    public bool Boolean;
+    bool Boolean;
 
     Renderer rend;
+
+    float y_position;
+
+    bool touch_active;
 
     void Start()
     {
@@ -35,45 +35,53 @@ public class circle : MonoBehaviour
 
         m_SpriteRenderer.color = Color.red;
 
-        //Start circle position x right and close outside camera
+        //Start circle position y down and close outside camera
         cam = Camera.main;
 
         cam_height = 2f * cam.orthographicSize;
 
-        cam_width = cam_height * cam.aspect;
+        y_position = cam_height / -2 - 3;
 
-        x_position = cam_width / 2 + 3;
+        transform.position = new Vector3(transform.position.x,y_position, 0);
 
-        transform.position = new Vector3(x_position, transform.position.y, 0);
-
-
+        //Start the Respawn method
+        StartCoroutine(Spawn());
 
     }
 
+    //Respawn the Circle every 0.5 seconds
+    IEnumerator Spawn()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Instantiate(this.gameObject);
+    }
 
     void Update()
     {
-        //When left outside camera respawn the circle
-        if (transform.position.x <= cam_width / -2 - 3)
+        //Change Color to greeen when touch the circle
+        for (int i = 0; i < Input.touchCount; i++)
         {
-            Boolean = Random.value > 0.3f;
+            Touch touch = Input.GetTouch(i);
 
-            rend.enabled = Boolean;
+            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
 
-            transform.position = new Vector3(x_position, transform.position.y, 0);
+            if (hit.collider != null && hit.transform == transform && touch.phase == TouchPhase.Began)
+            {
+                m_SpriteRenderer.color = Color.green;
 
-            m_SpriteRenderer.color = Color.red;
+            }
+
         }
 
         //Automatically moving to the left
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
-        
-    }
+        transform.Translate(Vector3.up * speed * Time.deltaTime);
 
-    //When Mouse click the circle Change the color
-    void OnMouseDown()
-    {
-        m_SpriteRenderer.color = Color.green;
+        //When left outside camera destroy the circle
+        if (transform.position.y >= cam_height / 2 + 3)
+        {
+            Destroy(this.gameObject);
+
+        }
 
     }
  
