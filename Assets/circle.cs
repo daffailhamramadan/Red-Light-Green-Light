@@ -18,8 +18,6 @@ public class circle : MonoBehaviour
 
     float y_position;
 
-    bool touch_active;
-
     void Start()
     {
 
