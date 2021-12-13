@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class circle : MonoBehaviour
 {
     SpriteRenderer m_SpriteRenderer;
+
+    public GameObject m_light;
+
+    public Light2D g_light;
 
     public float speed;
 
@@ -56,6 +61,15 @@ public class circle : MonoBehaviour
 
     void Update()
     {
+        if(rend.enabled == false)
+        {
+            m_light.SetActive(false);
+        }
+        else if (rend.enabled == true)
+        {
+            m_light.SetActive(true);
+        }
+
         //Change Color to greeen when touch the circle
         for (int i = 0; i < Input.touchCount; i++)
         {
@@ -63,10 +77,14 @@ public class circle : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
 
-            if (hit.collider != null && hit.transform == transform && touch.phase == TouchPhase.Began)
+            if (hit.collider != null && hit.transform == transform && touch.phase == TouchPhase.Began && rend.enabled == true)
             {
+                g_light = GetComponentInChildren<Light2D>();
+
                 m_SpriteRenderer.color = Color.green;
 
+                g_light.color = Color.green;
+                
             }
 
         }
