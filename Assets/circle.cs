@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using TMPro;
 
 public class circle : MonoBehaviour
 {
@@ -23,8 +24,11 @@ public class circle : MonoBehaviour
 
     float y_position;
 
+    AudioSource source;
+
     void Start()
     {
+        source = GetComponent<AudioSource>();
 
         //Sometimes the circle appears sometimes not
         rend = GetComponent<Renderer>();
@@ -61,6 +65,7 @@ public class circle : MonoBehaviour
 
     void Update()
     {
+        //Change light2d color
         if(rend.enabled == false)
         {
             m_light.SetActive(false);
@@ -70,20 +75,24 @@ public class circle : MonoBehaviour
             m_light.SetActive(true);
         }
 
-        //Change Color to greeen when touch the circle
+        //Change Color to green when touch (multi touch) the circle and add score +1 
         for (int i = 0; i < Input.touchCount; i++)
         {
             Touch touch = Input.GetTouch(i);
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
 
-            if (hit.collider != null && hit.transform == transform && touch.phase == TouchPhase.Began && rend.enabled == true)
+            if (hit.collider != null && hit.transform == transform && touch.phase == TouchPhase.Began && rend.enabled == true && m_SpriteRenderer.color == Color.red && GameController.game_over != true && GameController.is_paused != true)
             {
                 g_light = GetComponentInChildren<Light2D>();
 
                 m_SpriteRenderer.color = Color.green;
 
                 g_light.color = Color.green;
+
+                GameController.score += 1;
+
+                source.Play();
                 
             }
 
@@ -93,9 +102,14 @@ public class circle : MonoBehaviour
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
         //When left outside camera destroy the circle
-        if (transform.position.y >= cam_height / 2 + 3)
+        if (transform.position.y >= cam_height / 2 + 1)
         {
+            if (m_SpriteRenderer.color == Color.red && rend.enabled == true)
+            {
+                GameController.game_over = true;
+            }
             Destroy(this.gameObject);
+            
 
         }
 
