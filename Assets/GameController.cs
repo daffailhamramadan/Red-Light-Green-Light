@@ -7,16 +7,7 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-
-    public static bool isGameover;
-
-    public static bool isPaused;
-
-    bool is_start = true;
-
-    public Score score;
-
-    public static int health;
+    public GameRule game;
 
     public GameObject pauseText;
 
@@ -44,32 +35,34 @@ public class GameController : MonoBehaviour
         
         highscoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
 
-        score.value = 0;
+        game.isStart = true;
 
-        health = 3;
+        game.isGameover = false;
 
-        isGameover = false;
+        game.score = 0;
+
+        game.health = 3;        
 
         Time.timeScale = 0;   
     }
 
     void Update()
     {
-        if (score.value > PlayerPrefs.GetInt("HighScore", 0))
+        if (game.score > PlayerPrefs.GetInt("HighScore", 0))
         {
-            PlayerPrefs.SetInt("HighScore", score.value);
-            highscoreText.text = "High Score: " + score.value;
+            PlayerPrefs.SetInt("HighScore", game.score);
+            highscoreText.text = "High Score: " + game.score;
         }
 
         //Change Score Text
-        scoreText.text = "Score: " + score.value.ToString();
+        scoreText.text = "Score: " + game.score.ToString();
 
-        healthText.text = "h: " + GameController.health.ToString();
+        healthText.text = "h: " + game.health.ToString();
 
         //Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused != true && is_start != true)
+            if (game.isPaused != true && game.isStart != true)
             {
                 Pause();
                 pauseText.SetActive(true);
@@ -77,37 +70,36 @@ public class GameController : MonoBehaviour
             }
 
             //Quit Game
-            else if(isPaused == true && is_start != true)
+            else if(game.isPaused == true && game.isStart != true)
             {
                 Application.Quit();
             }
-            else if(is_start == true)
+            else if(game.isStart == true)
             {
                 Application.Quit();
             }
         }
 
-        if(health <= 0)
+        if(game.health <= 0)
         {
-            health = 0;
-            isGameover = true;
+            game.health = 0;
+            game.isGameover = true;
         }
 
         //Game_Over
-        if(GameController.isGameover == true)
+        if(game.isGameover == true)
         {
             GameOver();
-            isPaused = true;
+            game.isPaused = true;
             restart.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Application.Quit();
             }
-
         }
         
-
     }
+
     void GameOver()
     {
         music.Stop();
@@ -118,29 +110,29 @@ public class GameController : MonoBehaviour
 
     void Pause()
     {
-        isPaused = true;
+        game.isPaused = true;
         highScore.SetActive(true);
         Time.timeScale = 0f;
     }
 
-    public void Resume()
+    void Resume()
     {
         pauseText.SetActive(false);
-        isPaused = false;
+        game.isPaused = false;
         resumeButton.SetActive(false);
         highScore.SetActive(false);
         Time.timeScale = 1f;
     }
-    public void StartGame()
+    void StartGame()
     {
         music.Play();
-        isPaused = false;
-        is_start = false;
+        game.isPaused = false;
+        game.isStart = false;
         highScore.SetActive(false);
         startButton.SetActive(false);
         Time.timeScale = 1f;
     }
-    public void Restart()
+    void Restart()
     {
         SceneManager.LoadScene(0);
     }

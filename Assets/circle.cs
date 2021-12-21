@@ -10,7 +10,7 @@ public class circle : MonoBehaviour
 
     AudioSource source;
 
-    public Score score;
+    public GameRule game;
 
     void Start()
     {
@@ -33,11 +33,11 @@ public class circle : MonoBehaviour
 
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(touch.position), Vector2.zero);
 
-            if (hit.collider != null && hit.transform == transform && touch.phase == TouchPhase.Began && m_SpriteRenderer.color == Color.red && GameController.isGameover != true && GameController.isPaused != true)
+            if (hit.collider != null && hit.transform == transform && touch.phase == TouchPhase.Began && m_SpriteRenderer.color == Color.red && game.isGameover != true && game.isPaused != true)
             { 
                 m_SpriteRenderer.color = Color.green;
 
-                score.value += 1;
+                game.score += 1;
 
                 source.Play();
             }
@@ -50,7 +50,7 @@ public class circle : MonoBehaviour
     {
         if (collision.CompareTag("Line") && m_SpriteRenderer.color == Color.red)
         {
-            GameController.health -= 1;
+            game.health -= 1;
         }
 
       

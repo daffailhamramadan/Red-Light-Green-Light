@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 400d33b2ebe9b394dad311086b9d7ec5, type: 3}
-  m_Name: Score
+  m_Name: GameRule
   m_EditorClassIdentifier: 
   score: 0
+  health: 0
+  isGameover: 0
+  isPaused: 0
