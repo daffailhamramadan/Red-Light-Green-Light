@@ -7,30 +7,34 @@ using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    
-    public GameObject Pause_text;
 
-    public GameObject GameOver_text;
+    public static bool isGameover;
 
-    public static bool game_over;
-
-    public static bool is_paused;
+    public static bool isPaused;
 
     bool is_start = true;
 
-    public static int score = 0;
+    public Score score;
 
-    public GameObject Start_button;
+    public static int health;
 
-    public GameObject High_Score;
+    public GameObject pauseText;
 
-    public GameObject resume_button;
+    public GameObject gameoverText;
+
+    public GameObject startButton;
+
+    public GameObject highScore;
+
+    public GameObject resumeButton;
 
     public GameObject restart;
 
-    public TextMeshProUGUI score_Text;
+    public TextMeshProUGUI scoreText;
 
-    public TextMeshProUGUI highscore_Text;
+    public TextMeshProUGUI highscoreText;
+
+    public TextMeshProUGUI healthText;
 
     AudioSource music;
 
@@ -38,34 +42,42 @@ public class GameController : MonoBehaviour
     {
         music = GetComponent<AudioSource>();
         
-        highscore_Text.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+        highscoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
+
+        score.value = 0;
+
+        health = 3;
+
+        isGameover = false;
 
         Time.timeScale = 0;   
     }
 
     void Update()
     {
-        if (score > PlayerPrefs.GetInt("HighScore", 0))
+        if (score.value > PlayerPrefs.GetInt("HighScore", 0))
         {
-            PlayerPrefs.SetInt("HighScore", score);
-            highscore_Text.text = "High Score: " + score;
+            PlayerPrefs.SetInt("HighScore", score.value);
+            highscoreText.text = "High Score: " + score.value;
         }
 
         //Change Score Text
-        score_Text.text = "Score: " + GameController.score.ToString();
+        scoreText.text = "Score: " + score.value.ToString();
+
+        healthText.text = "h: " + GameController.health.ToString();
 
         //Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (is_paused != true && is_start != true)
+            if (isPaused != true && is_start != true)
             {
                 Pause();
-                Pause_text.SetActive(true);
-                resume_button.SetActive(true);
+                pauseText.SetActive(true);
+                resumeButton.SetActive(true);
             }
 
-            //Resume Game
-            else if(is_paused == true && is_start != true)
+            //Quit Game
+            else if(isPaused == true && is_start != true)
             {
                 Application.Quit();
             }
@@ -75,11 +87,17 @@ public class GameController : MonoBehaviour
             }
         }
 
+        if(health <= 0)
+        {
+            health = 0;
+            isGameover = true;
+        }
+
         //Game_Over
-        if(GameController.game_over == true)
+        if(GameController.isGameover == true)
         {
             GameOver();
-            is_paused = true;
+            isPaused = true;
             restart.SetActive(true);
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -94,40 +112,36 @@ public class GameController : MonoBehaviour
     {
         music.Stop();
         Time.timeScale = 0f;
-        High_Score.SetActive(true);
-        GameOver_text.SetActive(true);
+        highScore.SetActive(true);
+        gameoverText.SetActive(true);
     }
 
     void Pause()
     {
-        is_paused = true;
-        High_Score.SetActive(true);
+        isPaused = true;
+        highScore.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void Resume()
     {
-        Pause_text.SetActive(false);
-        is_paused = false;
-        resume_button.SetActive(false);
-        High_Score.SetActive(false);
+        pauseText.SetActive(false);
+        isPaused = false;
+        resumeButton.SetActive(false);
+        highScore.SetActive(false);
         Time.timeScale = 1f;
     }
     public void StartGame()
     {
         music.Play();
-        is_paused = false;
+        isPaused = false;
         is_start = false;
-        High_Score.SetActive(false);
-        Start_button.SetActive(false);
+        highScore.SetActive(false);
+        startButton.SetActive(false);
         Time.timeScale = 1f;
     }
     public void Restart()
     {
-        restart.SetActive(false);
-        game_over = false;
-        Time.timeScale = 1f;
-        score = 0;
         SceneManager.LoadScene(0);
     }
 }
