@@ -3,19 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public GameRule game;
+    [SerializeField] GameRule game;
 
-    public GameObject pauseText;
+    [SerializeField] GameObject pauseText;
 
-    public GameObject gameoverText;
+    [SerializeField] GameObject gameoverText;
 
-    public GameObject startButton;
+    [SerializeField] GameObject startButton;
 
-    public GameObject highScore;
+    [SerializeField] GameObject highScore;
 
-    public GameObject resumeButton;
+    [SerializeField] GameObject resumeButton;
 
-    public GameObject restart;
+    [SerializeField] GameObject restart;
 
     private AudioSource music;
 
