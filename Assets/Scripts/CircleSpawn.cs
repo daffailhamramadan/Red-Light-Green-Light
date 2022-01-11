@@ -6,15 +6,15 @@ public class CircleSpawn : MonoBehaviour
 
     [SerializeField] GameObject circle;
 
-    GameObject[] circleClone = new GameObject[3];
+    private GameObject[] circleClone = new GameObject[3];
 
-    float timer = 0.4f;
+    private float timer = 0.4f;
 
-    float time;
+    private float time;
 
-    Vector3[] startPosition = new Vector3[3];
+    private Vector3[] startPosition = new Vector3[3];
 
-    bool[] Boolean = new bool[3];
+    private bool[] Boolean = new bool[3];
 
     void Start()
     { 
