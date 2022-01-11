@@ -683,9 +683,6 @@ MonoBehaviour:
   highScore: {fileID: 872612942}
   resumeButton: {fileID: 1841238944}
   restart: {fileID: 1826176104}
-  scoreText: {fileID: 843221301}
-  highscoreText: {fileID: 872612944}
-  healthText: {fileID: 250791815}
 --- !u!82 &462276683
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1494,6 +1491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1171153065}
+  - component: {fileID: 1171153066}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -1518,6 +1516,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1171153066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171153064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a597d00f32178e45989d3fbc8070433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 11400000, guid: 80b32ce1a8ca09a499d0ebbbafdc87e9, type: 2}
+  scoreText: {fileID: 843221301}
+  highscoreText: {fileID: 872612944}
+  healthText: {fileID: 250791815}
 --- !u!1 &1572837806
 GameObject:
   m_ObjectHideFlags: 0
