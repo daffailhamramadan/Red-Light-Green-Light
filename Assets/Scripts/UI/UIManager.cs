@@ -8,4 +8,9 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI highscoreText;
 
     public TextMeshProUGUI healthText;
+
+    private void Start()
+    {
+        
+    }
 }
