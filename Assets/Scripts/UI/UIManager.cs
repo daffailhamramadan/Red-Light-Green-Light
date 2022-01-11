@@ -3,6 +3,8 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public GameRule game;
+
     public TextMeshProUGUI scoreText;
 
     public TextMeshProUGUI highscoreText;
