@@ -8,13 +8,13 @@ public class CircleTouch : MonoBehaviour
 {
     private SpriteRenderer m_SpriteRenderer;
 
-    private AudioSource source;
+    private AudioSource audioSource;
 
     public GameRule game;
 
     void Start()
     {
-        source = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
       
         //Start with color "red"
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
@@ -39,7 +39,7 @@ public class CircleTouch : MonoBehaviour
 
                 game.score += 1;
 
-                source.Play();
+                audioSource.Play();
             }
         }
         
