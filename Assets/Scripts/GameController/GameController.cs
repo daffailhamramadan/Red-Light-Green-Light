@@ -36,11 +36,6 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if (game.score > PlayerPrefs.GetInt("HighScore", 0))
-        {
-            PlayerPrefs.SetInt("HighScore", game.score);
-            highscoreText.text = "High Score: " + game.score;
-        }
 
         //Change Score Text
         scoreText.text = "Score: " + game.score.ToString();
