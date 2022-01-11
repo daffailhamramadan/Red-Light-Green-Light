@@ -11,6 +11,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        
+        highscoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
 }
