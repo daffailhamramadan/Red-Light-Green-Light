@@ -4,7 +4,7 @@ public class CircleSpawn : MonoBehaviour
 {
     [SerializeField] Transform circleParent;
 
-    public GameObject circle;
+    [SerializeField] GameObject circle;
 
     GameObject[] circleClone = new GameObject[3];
 
