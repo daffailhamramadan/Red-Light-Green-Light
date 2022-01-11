@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CircleMove : MonoBehaviour
 {
-    private float speed = 4f;
+    [SerializeField] private float speed;
 
     void Update()
     {
