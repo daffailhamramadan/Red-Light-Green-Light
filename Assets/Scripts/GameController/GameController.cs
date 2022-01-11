@@ -18,12 +18,6 @@ public class GameController : MonoBehaviour
 
     public GameObject restart;
 
-    public TextMeshProUGUI scoreText;
-
-    public TextMeshProUGUI highscoreText;
-
-    public TextMeshProUGUI healthText;
-
     AudioSource music;
 
     void Start()
