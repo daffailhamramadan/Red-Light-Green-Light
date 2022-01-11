@@ -13,4 +13,14 @@ public class UIManager : MonoBehaviour
     {
         highscoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
     }
+
+    private void Update()
+    {
+        if (game.score > PlayerPrefs.GetInt("HighScore", 0))
+        {
+            PlayerPrefs.SetInt("HighScore", game.score);
+            highscoreText.text = "High Score: " + game.score;
+        }
+    }
+
 }
