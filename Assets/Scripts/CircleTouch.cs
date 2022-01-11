@@ -6,7 +6,7 @@ using TMPro;
 
 public class CircleTouch : MonoBehaviour
 {
-    SpriteRenderer m_SpriteRenderer;
+    private SpriteRenderer m_SpriteRenderer;
 
     AudioSource source;
 
