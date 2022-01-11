@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
     public GameObject restart;
 
-    AudioSource music;
+    private AudioSource music;
 
     void Start()
     {
