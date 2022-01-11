@@ -14,11 +14,6 @@ public class CircleOut : MonoBehaviour
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     //If circle cross the line "Game Over"
     void OnTriggerExit2D(Collider2D collision)
