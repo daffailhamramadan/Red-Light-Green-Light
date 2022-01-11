@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CircleSpawn : MonoBehaviour
 {
-    public Transform circleParent;
+    [SerializeField] Transform circleParent;
 
     public GameObject circle;
 
