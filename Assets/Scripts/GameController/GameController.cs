@@ -22,8 +22,6 @@ public class GameController : MonoBehaviour
     void Start()
     {
         music = GetComponent<AudioSource>();
-        
-        highscoreText.text = "High Score: " + PlayerPrefs.GetInt("HighScore", 0).ToString();
 
         game.isStart = true;
 
