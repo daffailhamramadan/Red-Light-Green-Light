@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using TMPro;
 
-public class circle : MonoBehaviour
+public class CircleTouch : MonoBehaviour
 {
     SpriteRenderer m_SpriteRenderer;
 
