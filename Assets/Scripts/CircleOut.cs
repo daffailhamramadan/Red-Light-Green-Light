@@ -4,7 +4,7 @@ public class CircleOut : MonoBehaviour
 {
     private SpriteRenderer m_SpriteRenderer;
 
-    [SerializeField] GameRule game;
+    [SerializeField] GameRule gameRule;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class CircleOut : MonoBehaviour
     {
         if (collision.CompareTag("Line") && m_SpriteRenderer.color == Color.red)
         {
-            game.health -= 1;
+            gameRule.health -= 1;
         }
 
 
