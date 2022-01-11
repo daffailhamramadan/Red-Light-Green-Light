@@ -37,10 +37,6 @@ public class GameController : MonoBehaviour
     void Update()
     {
 
-        //Change Score Text
-        scoreText.text = "Score: " + game.score.ToString();
-
-        healthText.text = "h: " + game.health.ToString();
 
         //Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
