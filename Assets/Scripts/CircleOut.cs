@@ -6,7 +6,6 @@ public class CircleOut : MonoBehaviour
 
     public GameRule game;
 
-    // Start is called before the first frame update
     void Start()
     {
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
