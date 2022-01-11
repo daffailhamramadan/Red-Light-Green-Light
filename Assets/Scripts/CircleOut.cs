@@ -4,7 +4,7 @@ public class CircleOut : MonoBehaviour
 {
     private SpriteRenderer m_SpriteRenderer;
 
-    public GameRule game;
+    [SerializeField] GameRule game;
 
     void Start()
     {
