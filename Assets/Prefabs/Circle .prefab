@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7163645710437477492}
   - component: {fileID: 9069031484085081192}
   - component: {fileID: 1112070168}
+  - component: {fileID: -8374873538662038330}
   m_Layer: 0
   m_Name: 'Circle '
   m_TagString: Untagged
@@ -212,3 +213,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-8374873538662038330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1812695210510008674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e355940c4631e43b34cbd333f55885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameRule: {fileID: 11400000, guid: 80b32ce1a8ca09a499d0ebbbafdc87e9, type: 2}
