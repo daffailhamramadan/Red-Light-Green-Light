@@ -8,7 +8,7 @@ public class CircleTouch : MonoBehaviour
 {
     private SpriteRenderer m_SpriteRenderer;
 
-    AudioSource source;
+    private AudioSource source;
 
     public GameRule game;
 
