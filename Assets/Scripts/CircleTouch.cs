@@ -40,18 +40,5 @@ public class CircleTouch : MonoBehaviour
         }
         
     }
-
-    //If circle cross the line "Game Over"
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Line") && m_SpriteRenderer.color == Color.red)
-        {
-            game.health -= 1;
-        }
-
-      
-    }
-
-
      
 }
