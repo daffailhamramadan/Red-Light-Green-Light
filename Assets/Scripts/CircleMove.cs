@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CircleMove : MonoBehaviour
 {
-    float speed = 4f;
+    private float speed = 4f;
 
     void Start()
     {
