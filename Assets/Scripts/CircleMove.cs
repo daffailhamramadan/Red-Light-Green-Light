@@ -4,11 +4,6 @@ public class CircleMove : MonoBehaviour
 {
     private float speed = 4f;
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         //Automatically moving to the up
