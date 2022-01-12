@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
         GameOver,
     }
 
+    private GameState gameState;
 
     [SerializeField] GameRule game;
 
@@ -29,6 +30,8 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        gameState = GameState.Start;
+
         music = GetComponent<AudioSource>();
 
         game.isStart = true;
