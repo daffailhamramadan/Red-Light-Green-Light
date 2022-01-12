@@ -3,6 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public enum GameState
+    {
+        Start,
+
+        GameOver,
+    }
+
+
     [SerializeField] GameRule game;
 
     [SerializeField] GameObject pauseText;
