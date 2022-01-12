@@ -33,31 +33,19 @@ public class CircleSpawn : MonoBehaviour
         //Respawn and destroy the circle
         if(time > timer)
         {
-            circleClone[0] = Instantiate(circle, startPosition[0], Quaternion.identity, circleParent);
+            for(int i = 0; i < circleClone.Length; i++)
+            {
+                circleClone[i] = Instantiate(circle, startPosition[i], Quaternion.identity, circleParent);
 
-            circleClone[1] = Instantiate(circle, startPosition[1], Quaternion.identity, circleParent);
+                Boolean[i] = Random.value > 0.3f;
 
-            circleClone[2] = Instantiate(circle, startPosition[2], Quaternion.identity, circleParent);
+                circleClone[i].SetActive(Boolean[i]);
 
-            Boolean[0] = Random.value > 0.3f;
+                Destroy(circleClone[i], 10f);
 
-            Boolean[1] = Random.value > 0.3f;
-
-            Boolean[2] = Random.value > 0.3f;
-
-            circleClone[0].SetActive(Boolean[0]);
-
-            circleClone[1].SetActive(Boolean[1]);
-
-            circleClone[2].SetActive(Boolean[2]);
-
+            }
+           
             time = 0f;
-
-            Destroy(circleClone[0], 10f);
-
-            Destroy(circleClone[1], 10f);
-
-            Destroy(circleClone[2], 10f);
 
         }
 
