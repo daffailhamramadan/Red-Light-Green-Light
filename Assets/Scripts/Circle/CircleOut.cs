@@ -4,20 +4,20 @@ public class CircleOut : MonoBehaviour
 {
     private SpriteRenderer m_SpriteRenderer;
 
-    [SerializeField] GameRule gameRule;
+    private GameController gameController;
 
     void Awake()
     {
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
+
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
-
-    //If circle cross the line "Game Over"
     void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Line") && m_SpriteRenderer.color == Color.red)
         {
-            gameRule.health -= 1;
+            gameController.health -= 1;
         }
 
 
