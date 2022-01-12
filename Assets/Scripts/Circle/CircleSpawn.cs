@@ -14,16 +14,16 @@ public class CircleSpawn : MonoBehaviour
 
     private Vector3[] startPosition = new Vector3[3];
 
+    private float[] positionX = { 0f, -1.5f, 1.5f };
+
     private bool[] Boolean = new bool[3];
 
     void Start()
     { 
-        startPosition[0] = transform.position;
-
-        startPosition[1] = new Vector3(-1.5f, transform.position.y, 0f);
-
-        startPosition[2] = new Vector3(1.5f, transform.position.y, 0f);
-
+        for(int i = 0; i < startPosition.Length; i++)
+        {
+            startPosition[i] = new Vector3(positionX[i], transform.position.y, 0f);
+        }
     
     }
 
