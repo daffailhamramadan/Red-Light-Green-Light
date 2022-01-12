@@ -6,7 +6,7 @@ public class CircleOut : MonoBehaviour
 
     [SerializeField] GameRule gameRule;
 
-    void Start()
+    void Awake()
     {
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }

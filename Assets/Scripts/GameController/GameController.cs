@@ -28,11 +28,14 @@ public class GameController : MonoBehaviour
 
     private AudioSource music;
 
+    private void Awake()
+    {
+        music = GetComponent<AudioSource>();
+    }
+
     void Start()
     {
-        gameState = GameState.Start;
-
-        music = GetComponent<AudioSource>();
+        gameState = GameState.Start;       
 
         game.isStart = true;
 

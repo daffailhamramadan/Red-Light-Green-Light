@@ -8,13 +8,16 @@ public class CircleTouch : MonoBehaviour
 
     public GameRule game;
 
-    void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-      
-        //Start with color "red"
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
 
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    void Start()
+    {
+        //Start with color "red"
         m_SpriteRenderer.color = Color.red;
 
     }
