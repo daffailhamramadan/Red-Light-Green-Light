@@ -7,6 +7,10 @@ public class GameController : MonoBehaviour
     {
         Start,
 
+        Play,
+
+        Pause,
+
         GameOver,
     }
 
@@ -50,24 +54,19 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-
+        Debug.Log(gameState);
 
         //Pause game
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (game.isPaused != true && game.isStart != true)
+            if (gameState == GameState.Pause)
             {
                 Pause();
                 pauseText.SetActive(true);
                 resumeButton.SetActive(true);
             }
 
-            //Quit Game
-            else if(game.isPaused == true && game.isStart != true)
-            {
-                Application.Quit();
-            }
-            else if(game.isStart == true)
+            else if(gameState == GameState.Start)
             {
                 Application.Quit();
             }
@@ -76,11 +75,12 @@ public class GameController : MonoBehaviour
         if(game.health <= 0)
         {
             game.health = 0;
-            game.isGameover = true;
+            gameState = GameState.GameOver;
         }
 
+
         //Game_Over
-        if(game.isGameover == true)
+        if(gameState == GameState.GameOver)
         {
             GameOver();
             game.isPaused = true;
