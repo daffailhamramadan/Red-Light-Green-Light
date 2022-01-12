@@ -29,8 +29,6 @@ public class CircleSpawn : MonoBehaviour
 
     void Update()
     {
-
-        //Respawn and destroy the circle
         if(time > timer)
         {
             for(int i = 0; i < circleClone.Length; i++)
@@ -49,7 +47,6 @@ public class CircleSpawn : MonoBehaviour
 
         }
 
-        //Timer
         time += Time.deltaTime;
      
     }

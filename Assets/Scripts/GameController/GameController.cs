@@ -12,121 +12,71 @@ public class GameController : MonoBehaviour
         Pause,
 
         GameOver,
+
+        Restart,
+        
+        Quit,
     }
 
-    private GameState gameState;
+    public GameState gameState;
 
-    [SerializeField] GameRule game;
+    public int score;
 
-    [SerializeField] GameObject pauseText;
-
-    [SerializeField] GameObject gameoverText;
-
-    [SerializeField] GameObject startButton;
-
-    [SerializeField] GameObject highScore;
-
-    [SerializeField] GameObject resumeButton;
-
-    [SerializeField] GameObject restart;
-
-    private AudioSource music;
-
-    private void Awake()
-    {
-        music = GetComponent<AudioSource>();
-    }
+    public int health;
 
     void Start()
     {
         gameState = GameState.Start;       
+        
+        if(gameState == GameState.Start)
+        {
+            Time.timeScale = 0f;
 
-        game.isStart = true;
+            score = 0;
 
-        game.isGameover = false;
-
-        game.score = 0;
-
-        game.health = 3;        
-
-        Time.timeScale = 0;   
+            health = 3;
+        }
     }
 
     void Update()
     {
-        Debug.Log(gameState);
 
-        //Pause game
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if(gameState == GameState.Play)
         {
+            Time.timeScale = 1f;
+        }
+
+        if (gameState == GameState.GameOver)
+        {
+            health = 0;
+            Time.timeScale = 0f;
+        }
+
+        if (gameState == GameState.Restart)
+        {
+            SceneManager.LoadScene(0);
+        }
+
+        if(gameState == GameState.Quit)
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && gameState != GameState.Start)
+        {
+            gameState = GameState.Pause;
+
             if (gameState == GameState.Pause)
             {
-                Pause();
-                pauseText.SetActive(true);
-                resumeButton.SetActive(true);
-            }
-
-            else if(gameState == GameState.Start)
-            {
-                Application.Quit();
+                Time.timeScale = 0f;
             }
         }
 
-        if(game.health <= 0)
+        if(health <= 0)
         {
-            game.health = 0;
             gameState = GameState.GameOver;
-        }
-
-
-        //Game_Over
-        if(gameState == GameState.GameOver)
-        {
-            GameOver();
-            game.isPaused = true;
-            restart.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                Application.Quit();
-            }
         }
         
     }
 
-    void GameOver()
-    {
-        music.Stop();
-        Time.timeScale = 0f;
-        highScore.SetActive(true);
-        gameoverText.SetActive(true);
-    }
-
-    void Pause()
-    {
-        game.isPaused = true;
-        highScore.SetActive(true);
-        Time.timeScale = 0f;
-    }
-
-    void Resume()
-    {
-        pauseText.SetActive(false);
-        game.isPaused = false;
-        resumeButton.SetActive(false);
-        highScore.SetActive(false);
-        Time.timeScale = 1f;
-    }
-    void StartGame()
-    {
-        music.Play();
-        game.isPaused = false;
-        game.isStart = false;
-        highScore.SetActive(false);
-        startButton.SetActive(false);
-        Time.timeScale = 1f;
-    }
-    void Restart()
-    {
-        SceneManager.LoadScene(0);
-    }
 }
